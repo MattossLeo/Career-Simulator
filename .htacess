@@ -1,0 +1,10 @@
+# Bloquear acesso a arquivos sensíveis
+<FilesMatch "\.(htaccess|ini|phps|fla|psd|log|sh)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Redirecionamento para HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
